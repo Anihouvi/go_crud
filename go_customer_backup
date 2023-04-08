@@ -1,0 +1,142 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 12.13
+-- Dumped by pg_dump version 14.3
+
+-- Started on 2023-04-04 10:37:49 SAST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 203 (class 1259 OID 98328)
+-- Name: customers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.customers (
+    id integer NOT NULL,
+    name character varying(255),
+    email character varying(255),
+    phone character varying(20),
+    address text
+);
+
+
+ALTER TABLE public.customers OWNER TO postgres;
+
+--
+-- TOC entry 202 (class 1259 OID 98326)
+-- Name: customers_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.customers_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.customers_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3144 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: customers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.customers_id_seq OWNED BY public.customers.id;
+
+
+--
+-- TOC entry 3005 (class 2604 OID 98331)
+-- Name: customers id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.customers ALTER COLUMN id SET DEFAULT nextval('public.customers_id_seq'::regclass);
+
+
+--
+-- TOC entry 3138 (class 0 OID 98328)
+-- Dependencies: 203
+-- Data for Name: customers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.customers (id, name, email, phone, address) FROM stdin;
+20	Mr AAB GBAGUIDI	patchocharley@gmail.com	0810799772	40 Abercorn Avenue, Hyde Park, 2196
+21	Boris GBAGUIDI	patchocharley@gmail.com	0810799772	27 Surbiton Avenue\r\n27
+22	Mr AAB GBAGUIDI	patchocharley@gmail.com	0810799772	40 Abercorn Avenue, Hyde Park, 2196
+23	Mr AAB GBAGUIDI	patchocharley@gmail.com	0810799772	40 Abercorn Avenue, Hyde Park, 2196
+24	Boris GBAGUIDI	patchocharley@gmail.com	0810799772	27 Surbiton Avenue\r\n27
+26	Mr AAB GBAGUIDI	patchocharley@gmail.com	0810799772	40 Abercorn Avenue, Hyde Park, 2196
+25	Aya Gbaguidi	patchocharley@gmail.com	0810799772	27 Surbiton Avenue\r\n27
+27	Boris TATA	patchocharley@gmail.com	0810799772	27 Surbiton Avenue\r\n27
+28	Mr AAB GBAGUIDI	patchocharley@gmail.com	0810799772	40 Abercorn Avenue, Hyde Park, 2196
+19	Boris GBAGUIDI	patchocharley@gmail.com	0810799772	27 Surbiton Avenue\r\n27
+29	Boris GBAGUIDI	patchocharley@gmail.com	0810799772	27 Surbiton Avenue\r\n27
+\.
+
+
+--
+-- TOC entry 3145 (class 0 OID 0)
+-- Dependencies: 202
+-- Name: customers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.customers_id_seq', 29, true);
+
+
+--
+-- TOC entry 3007 (class 2606 OID 98336)
+-- Name: customers customers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.customers
+    ADD CONSTRAINT customers_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3008 (class 1259 OID 98337)
+-- Name: idx_customers_email; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_customers_email ON public.customers USING btree (email);
+
+
+--
+-- TOC entry 3009 (class 1259 OID 98339)
+-- Name: idx_customers_id; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_customers_id ON public.customers USING btree (id);
+
+
+--
+-- TOC entry 3010 (class 1259 OID 98338)
+-- Name: idx_customers_name; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE INDEX idx_customers_name ON public.customers USING btree (name);
+
+
+-- Completed on 2023-04-04 10:37:50 SAST
+
+--
+-- PostgreSQL database dump complete
+--
+

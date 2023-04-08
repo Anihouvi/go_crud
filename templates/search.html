@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Search Results for "{{.Query}}"</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+      {{range .Customers}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Email}}</td>
+            <td>{{.Phone}}</td>
+            <td>{{.Address}} </td>
+        </tr>
+      {{else}}
+        <tr>
+          <td colspan="5">No results found</td>
+        </tr>
+      {{end}}
+    </table>
+  </body>
+</html>
