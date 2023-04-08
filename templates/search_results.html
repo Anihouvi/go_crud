@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>Search Results</title>
+  </head>
+  <body>
+    <h1>Search Results for "{{.Query}}"</h1>
+    <form action="/search" method="GET">
+      <label for="query">Search:</label>
+      <input type="text" id="query" name="query">
+      <button type="submit">Search</button>
+    </form>
+    {{if .Results}}
+      <ul>
+        {{range .Results}}
+          <li>{{.ID}}: {{.Name}} ({{.Email}})</li>
+        {{end}}
+      </ul>
+    {{else}}
+      <p>No results found.</p>
+    {{end}}
+  </body>
+</html>

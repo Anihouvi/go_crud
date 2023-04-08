@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Update Customer</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Update Customer</h1>
+    <form action="/update?id={{.ID}}" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" value="{{.Name}}"><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{.Email}}"><br>
+        <label for="phone">Phone:</label><br>
+        <input type="text" id="phone" name="phone" value="{{.Phone}}"><br>
+        <label for="address">Address:</label><br>
+        <textarea id="address" name="address">{{.Address}}</textarea><br><br>
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>
+

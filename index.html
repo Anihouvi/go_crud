@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Customer List</h1>
+    <p>Total Customers: {{.Count}}</p>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {{range .Customers}}
+        <tr>
+            <td>{{.ID}}</td>
+            <td>{{.Name}}</td>
+            <td>{{.Email}}</td>
+            <td>{{.Phone}}</td>
+            <td>{{.Address}}
+            </td>
+            <td><a href="/update?id={{.ID}}">Update</a></td>
+            <td><a href="/delete?id={{.ID}}">Delete</a></td>
+        </tr>
+        {{end}}
+    </table>
+    <br>
+    <form action="/search" method="GET">
+      <label for="query">Search:</label>
+      <input type="text" id="query" name="query">
+      <button type="submit">Search</button>
+    </form>
+    <a href="/create">Create New Customer</a>
+</body>
+</html>
