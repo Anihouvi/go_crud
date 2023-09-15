@@ -11,7 +11,7 @@ COPY . .
 RUN go build -o main
 
 # Expose port 8080 for the HTTP server
-EXPOSE 8080
+EXPOSE 8000
 
 # Run the Go application
 CMD ["./main"]
